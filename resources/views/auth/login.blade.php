@@ -13,7 +13,7 @@
     <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
 </head>
 
-<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
+<body>
     <main class="d-flex w-100 h-100">
         <div class="container d-flex flex-column">
             <div class="row vh-100">
@@ -30,7 +30,7 @@
                                             <input
                                                 class="form-control form-control-lg @error('email') is-invalid @enderror"
                                                 type="email" name="email" placeholder="Địa chỉ email"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus />
+                                                value="{{ old('email') }}" autocomplete="email" autofocus />
 
                                             @error('email')
                                             <span class="text-danger">
@@ -38,6 +38,7 @@
                                             </span>
                                             @enderror
                                         </div>
+
                                         <div class="mb-3">
                                             <label class="form-label">Mật khẩu</label>
                                             <input
@@ -53,6 +54,7 @@
                                                 <a href="{{ route('password.request') }}">Quên mật khẩu</a>
                                             </small>
                                         </div>
+
                                         <div>
                                             <label class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="remember"
@@ -62,6 +64,7 @@
                                                 </span>
                                             </label>
                                         </div>
+
                                         <div class="text-center mt-3">
                                             <button type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
                                         </div>
