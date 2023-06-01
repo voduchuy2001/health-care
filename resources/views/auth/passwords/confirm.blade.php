@@ -1,49 +1,61 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-                <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Đăng nhập</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
+</head>
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
-                        @csrf
+<body>
+    <main class="d-flex w-100 h-100">
+        <div class="container d-flex flex-column">
+            <div class="row vh-100">
+                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+                    <div class="d-table-cell align-middle">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="m-sm-4">
+                                    Xác nhận lại mật khẩu để tiếp tục
+                                    <form method="POST" action="{{ route('password.confirm') }}">
+                                        @csrf
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                        <div class="mb-3">
+                                            <input
+                                                class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                                type="password" name="password" placeholder="Mật khẩu" />
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                            @error('password')
+                                            <span class="text-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                            <small>
+                                                <a href="{{ route('password.request') }}">Quên mật khẩu</a>
+                                            </small>
+                                        </div>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <div class="text-center mt-3">
+                                            <button type="submit" class="btn btn-lg btn-primary">Xác nhận</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirm Password') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    </main>
+
+    <script src="admin/js/app.js"></script>
+</body>
+
+</html>
