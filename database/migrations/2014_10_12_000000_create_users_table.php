@@ -19,6 +19,7 @@ return new class() extends Migration
             $table->string('twister')->nullable();
             $table->string('email')->unique();
             $table->enum('role', ['admin', 'employees', 'guess'])->default('guess');
+            $table->boolean('is_default')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
