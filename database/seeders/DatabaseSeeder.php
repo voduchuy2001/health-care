@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
             'role' => 'admin',
-            'verified_at' => Carbon::now(),
+            'email_verified_at' => Carbon::now(),
             'is_default' => 1,
         ]);
     }

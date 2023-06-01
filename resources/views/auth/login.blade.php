@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
 
 <head>
     <base href="/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
     <title>Đăng nhập</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    
+    @include('admin.layouts.css')
 </head>
 
 <body>
-    <main class="d-flex w-100 h-100">
-        <div class="container d-flex flex-column">
-            <div class="row vh-100">
-                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-                    <div class="d-table-cell align-middle">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="m-sm-4">
-                                    <form method="POST" action="{{ route('login') }}">
+
+    <div class="auth-page-wrapper pt-5">
+        <div class="auth-page-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card mt-4">
+                            <div class="card-body p-4">
+                                <div class="text-center mt-2">
+                                    <h5 class="text-primary">Đăng nhập</h5>
+                                </div>
+                                <div class="p-2">
+                                    <form action="{{ route('login') }}" method="POST">
                                         @csrf
 
                                         <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input
-                                                class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                                type="email" name="email" placeholder="Địa chỉ email"
-                                                value="{{ old('email') }}" autocomplete="email" autofocus />
+                                            <label for="email" class="form-label">Email</label>
+                                            <input name="email" type="text" class="form-control" id="email"
+                                                placeholder="Email" value="{{ old('email') }}" required
+                                                autocomplete="email" autofocus>
 
                                             @error('email')
                                             <span class="text-danger">
@@ -40,46 +43,54 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Mật khẩu</label>
-                                            <input
-                                                class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                                type="password" name="password" placeholder="Mật khẩu" />
+                                            <div class="float-end">
+                                                <a href="{{ route('password.request') }}" class="text-muted">Quên mật khẩu</a>
+                                            </div>
+                                            <label class="form-label" for="password-input">Mật khẩu</label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password" class="form-control pe-5 password-input"
+                                                    placeholder="Mật khẩu" id="password-input" name="password">
 
-                                            @error('password')
-                                            <span class="text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                            <small>
-                                                <a href="{{ route('password.request') }}">Quên mật khẩu</a>
-                                            </small>
-                                        </div>
-
-                                        <div>
-                                            <label class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                <span class="form-check-label">
-                                                    Ghi nhớ
+                                                @error('password')
+                                                <span class="text-danger">
+                                                    <strong>{{ $message }}</strong>
                                                 </span>
-                                            </label>
+                                                @enderror
+                                                <button
+                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                    type="button" id="password-addon"><i
+                                                        class="ri-eye-fill align-middle"></i></button>
+                                            </div>
                                         </div>
 
-                                        <div class="text-center mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Đăng nhập</button>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember"
+                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="remember" for="auth-remember-check">Ghi nhớ tôi</label>
+                                        </div>
+
+                                        <div class="mt-4">
+                                            <button class="btn btn-success w-100" type="submit">Đăng nhập</button>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                            <div class="signin-other-title">
+                                                <a href="{{ route('register') }}">
+                                                    <h5 class="fs-13 mb-4 title">Bạn chưa có tài khoản</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <script src="admin/js/app.js"></script>
+    @include('admin.layouts.javascript')
 </body>
 
 </html>

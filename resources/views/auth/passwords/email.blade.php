@@ -1,93 +1,51 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address')
-                                }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
 
 <head>
     <base href="/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Quên mật khẩu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>Reset Password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    
+    @include('admin.layouts.css')
 </head>
 
 <body>
-    <main class="d-flex w-100 h-100">
-        <div class="container d-flex flex-column">
-            <div class="row vh-100">
-                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-                    <div class="d-table-cell align-middle">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="m-sm-4">
-                                    @if (session('status'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('status') }}
-                                    </div>
-                                    @endif
-                                    
-                                    <form method="POST" action="{{ route('password.email') }}">
+
+    <div class="auth-page-wrapper pt-5">
+        <div class="auth-page-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card mt-4">
+                            <div class="card-body p-4">
+                                <div class="text-center mt-2">
+                                    <lord-icon src="https://cdn.lordicon.com/rhvddzym.json" trigger="loop"
+                                        colors="primary:#0ab39c" class="avatar-xl"></lord-icon>
+                                </div>
+
+
+                                <div class="text-center mt-2">
+                                    <h5 class="text-primary">Khôi phục mật khẩu</h5>
+                                </div>
+                                <div class="p-2">
+                                    <form action="{{ route('password.email') }}" method="POST">
                                         @csrf
 
+                                        @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('status') }}
+                                        </div>
+                                        @endif
+
                                         <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input
-                                                class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                                type="email" name="email" placeholder="Địa chỉ email"
-                                                value="{{ old('email') }}" autocomplete="email" autofocus />
+                                            <label for="email" class="form-label">Email</label>
+                                            <input name="email" type="text" class="form-control" id="email"
+                                                placeholder="Enter email" value="{{ old('email') }}" required
+                                                autocomplete="email" autofocus>
 
                                             @error('email')
                                             <span class="text-danger">
@@ -96,21 +54,20 @@
                                             @enderror
                                         </div>
 
-                                        <div class="text-center mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Gửi yêu cầu</button>
+                                        <div class="mt-4">
+                                            <button class="btn btn-success w-100" type="submit">Gửi email khôi phục</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <script src="admin/js/app.js"></script>
+    @include('admin.layouts.javascript')
 </body>
 
 </html>

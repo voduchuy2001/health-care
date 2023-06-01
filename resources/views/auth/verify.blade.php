@@ -1,52 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
 
 <head>
     <base href="/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
     <title>Xác thực</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+
+    @include('admin.layouts.css')
 </head>
 
 <body>
-    <main class="d-flex w-100 h-100">
-        <div class="container d-flex flex-column">
-            <div class="row vh-100">
-                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-                    <div class="d-table-cell align-middle">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="m-sm-4">
+    <div class="auth-page-wrapper pt-5">
+        <div class="auth-page-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card mt-4">
+                            <div class="card-body p-4">
+                                <div class="text-center mt-2">
+                                    <lord-icon src="https://cdn.lordicon.com/rhvddzym.json" trigger="loop"
+                                        colors="primary:#0ab39c" class="avatar-xl"></lord-icon>
+                                </div>
+
+                                <div class="text-center mt-2">
+                                    <h5 class="text-primary">Xác thực email</h5>
+                                    <p>Nếu bạn không nhận được email hãy bấm vào link bên dưới</p>
+                                </div>
+                                <div class="p-2">
                                     @if (session('resent'))
                                     <div class="alert alert-success" role="alert">
-                                        Email xác thực mới đã được gửi về địa chỉ email của bạn
+                                        Email xác thực mới đã được gửi đến email của bạn
                                     </div>
                                     @endif
 
-                                    <span>Bạn cần xác thực địa chỉ email để tiếp tục sử dụng dịch vụ</span>
-
-                                    <p>Vui lòng kiểm tra email trước khi gửi yêu cầu mới</p>
                                     <form method="POST" action="{{ route('verification.resend') }}">
                                         @csrf
-                                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Bấm vào đây để
-                                            gửi yêu cầu mới</button>.
+
+                                        <div class="mt-4">
+                                            <button class="btn btn-success w-100" type="submit">Bấm vào đây để gửi yêu cầu</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <script src="admin/js/app.js"></script>
+    @include('admin.layouts.javascript')
 </body>
 
 </html>

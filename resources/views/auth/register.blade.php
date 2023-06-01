@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
 
 <head>
     <base href="/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
     <title>Đăng ký</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    
+    @include('admin.layouts.css')
 </head>
 
 <body>
-    <main class="d-flex w-100 h-100">
-        <div class="container d-flex flex-column">
-            <div class="row vh-100">
-                <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-                    <div class="d-table-cell align-middle">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="m-sm-4">
-                                    <form method="POST" action="{{ route('register') }}">
+
+    <div class="auth-page-wrapper pt-5">
+        <div class="auth-page-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card mt-4">
+                            <div class="card-body p-4">
+                                <div class="text-center mt-2">
+                                    <h5 class="text-primary">Đăng ký</h5>
+                                </div>
+                                <div class="p-2">
+                                    <form action="{{ route('register') }}" method="POST">
                                         @csrf
 
                                         <div class="mb-3">
-                                            <label class="form-label">Họ và tên</label>
-                                            <input
-                                                class="form-control form-control-lg @error('name') is-invalid @enderror"
-                                                type="text" name="name" placeholder="Họ và tên"
-                                                value="{{ old('name') }}" autocomplete="name" autofocus />
+                                            <label for="name" class="form-label">Họ và tên</label>
+                                            <input name="name" type="text" class="form-control" id="name"
+                                                placeholder="Họ và tên" value="{{ old('name') }}" required
+                                                autocomplete="name" autofocus>
 
                                             @error('name')
                                             <span class="text-danger">
@@ -40,11 +43,10 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input
-                                                class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                                type="email" name="email" placeholder="Địa chỉ email"
-                                                value="{{ old('email') }}" autocomplete="email" autofocus />
+                                            <label for="email" class="form-label">Email</label>
+                                            <input name="email" type="text" class="form-control" id="email"
+                                                placeholder="Địa chỉ email" value="{{ old('email') }}" required
+                                                autocomplete="email" autofocus>
 
                                             @error('email')
                                             <span class="text-danger">
@@ -54,41 +56,56 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Mật khẩu</label>
-                                            <input
-                                                class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                                type="password" name="password" placeholder="Mật khẩu" />
+                                            <label class="form-label" for="password-input">Mật khẩu</label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password" class="form-control pe-5 password-input"
+                                                    placeholder="Mật khẩu" id="password-input" name="password">
 
-                                            @error('password')
-                                            <span class="text-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                                @error('password')
+                                                <span class="text-danger">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                                <button
+                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                    type="button" id="password-addon"><i
+                                                        class="ri-eye-fill align-middle"></i></button>
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="form-label">Xác nhận khẩu</label>
-                                            <input
-                                                class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                                name="password_confirmation" autocomplete="new-password" type="password"
-                                                placeholder="Xác nhận mật khẩu" name="password_confirmation"                                                 autocomplete="new-password" />
+                                            <label class="form-label" for="password-confirmation-input">Xác nhận mật
+                                                khẩu</label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password"
+                                                    class="form-control pe-5 password-confirmation-input"
+                                                    placeholder="Xác nhận mật khẩu" id="password-confirmation-input"
+                                                    name="password_confirmation">
+                                            </div>
                                         </div>
 
-                                        <div class="text-center mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Đăng ký</button>
+                                        <div class="mt-4">
+                                            <button class="btn btn-success w-100" type="submit">Đăng ký</button>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                            <div class="signin-other-title">
+                                                <a href="{{ route('login') }}">
+                                                    <h5 class="fs-13 mb-4 title">Bấm vào đây để đăng nhập</h5>
+                                                </a>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <script src="admin/js/app.js"></script>
+    @include('admin.layouts.javascript')
 </body>
 
 </html>
