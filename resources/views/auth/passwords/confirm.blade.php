@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Đăng nhập</title>
+    <title>Xác nhận mật khẩu</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
     <link class="js-stylesheet" href="admin/css/light.css" rel="stylesheet">
 </head>
@@ -22,11 +22,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="m-sm-4">
-                                    Xác nhận lại mật khẩu để tiếp tục
                                     <form method="POST" action="{{ route('password.confirm') }}">
                                         @csrf
 
                                         <div class="mb-3">
+                                            <label class="form-label">Mật khẩu</label>
                                             <input
                                                 class="form-control form-control-lg @error('password') is-invalid @enderror"
                                                 type="password" name="password" placeholder="Mật khẩu" />
