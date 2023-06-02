@@ -13,3 +13,4 @@
 <script src="guess/js/scrollax.min.js"></script>
 <script src="guess/js/google-map.js"></script>
 <script src="guess/js/main.js"></script>
+@yield('scripts')

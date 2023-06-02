@@ -28,7 +28,7 @@
             </div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="{{ route('admin.service.index') }}">
                         <i class="ri-server-line"></i> <span>Dịch vụ</span>
                     </a>
                 </li>

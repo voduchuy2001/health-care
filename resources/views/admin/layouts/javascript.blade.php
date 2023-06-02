@@ -7,3 +7,5 @@
 <script src="admin/assets/libs/swiper/swiper-bundle.min.js"></script>
 <script src="admin/assets/js/pages/dashboard-ecommerce.init.js"></script>
 <script src="admin/assets/js/app.js"></script>
+<script src="admin/assets/js/jquery-3.7.0.min.js"></script>
+@yield('scripts')

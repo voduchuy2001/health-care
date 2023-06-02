@@ -5,3 +5,4 @@
 <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 <link href="admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 <link href="admin/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+@yield('css')

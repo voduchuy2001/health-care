@@ -13,7 +13,7 @@ return new class() extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('description');
-            $table->boolean('status')->default(1);
+            $table->integer('price');
             $table->text('meta_description');
             $table->text('meta_keywords');
             $table->text('meta_title');

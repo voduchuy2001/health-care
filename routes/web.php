@@ -20,10 +20,12 @@ Route::get('/service', [ServiceController::class, 'index'])->name('service.index
 Route::get('/service-pack', [ServicePackController::class, 'index'])->name('service-pack.index');
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 
-Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::prefix('/service')->controller(AdminServiceController::class)->name('service.')->group(function () {
+    Route::prefix('/service')->controller(AdminServiceController::class)->name('admin.service.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
     });
 });

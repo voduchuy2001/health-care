@@ -11,7 +11,6 @@ return new class() extends Migration
         Schema::create('service_packs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('short_description');
             $table->text('description');
             $table->integer('price');
             $table->text('meta_description');
