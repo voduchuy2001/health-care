@@ -1,18 +1,31 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Guess\AboutUsController;
+use App\Http\Controllers\Guess\ArticleController;
+use App\Http\Controllers\Guess\ContactUsController;
+use App\Http\Controllers\Guess\HomeController;
+use App\Http\Controllers\Guess\ServiceController;
+use App\Http\Controllers\Guess\ServicePackController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Auth::routes(['verify' => true]);
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
+Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
+Route::get('/service-pack', [ServicePackController::class, 'index'])->name('service-pack.index');
+Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::prefix('/service')->controller(AdminServiceController::class)->name('admin.service.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+    });
 });
