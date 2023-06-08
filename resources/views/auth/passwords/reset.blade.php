@@ -74,7 +74,7 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Cập nhật mật
+                                            <button class="btn btn-primary w-100" type="submit">Cập nhật mật
                                                 khẩu</button>
                                         </div>
                                     </form>

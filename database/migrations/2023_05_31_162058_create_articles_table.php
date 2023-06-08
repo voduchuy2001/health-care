@@ -14,9 +14,9 @@ return new class() extends Migration
             $table->text('short_description');
             $table->text('description');
             $table->string('image');
-            $table->text('meta_description');
-            $table->text('meta_keywords');
-            $table->text('meta_title');
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_title')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

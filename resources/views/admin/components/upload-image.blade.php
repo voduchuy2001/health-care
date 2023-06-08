@@ -5,17 +5,19 @@
             <input type="file" name="image" class="upload-image" id="load-image" onchange="previewImage(this)">
 
             <p onclick="loadImage()">
-                Nhấn vào đây để chọn ảnh tải lên.
+                Tải ảnh lên.
             </p>
         </div>
 
-        <div id="preview-image-box" class="text-center preview-image-box">
-            <img src="" id="preview-image" class="img-fluid rounded">
+        <div id="preview-image-box" class="preview-image-box">
+            <div class="d-flex align-items-center justify-center">
+                <img src="" id="preview-image" class="preview-image">
 
-            <p class="text-danger change-image" onclick="removePreviewImage()">
-                <i class="ri-delete-bin-5-line"></i>
-                Xóa ảnh
-            </p>
+                <p class="text-danger change-image" onclick="removePreviewImage()">
+                    <i class="ri-delete-bin-5-line"></i>
+                    Xóa ảnh
+                </p>
+            </div>
         </div>
 
         @error('image')
@@ -63,16 +65,23 @@
         display: none;
     }
 
+    .preview-image {
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 100%;
+    }
+
     .form-upload-image {
-        width: 100%;
+        width: 7.5rem;
+        height: 7.5rem;
         border: 1px dashed #b1b1b1;
-        border-radius: .25rem
+        border-radius: 100%;
     }
 
     .form-upload-image p {
-        width: 100%;
         text-align: center;
-        line-height: 150px;
+        line-height: 120px;
+        cursor: pointer;
     }
 
     .change-image {

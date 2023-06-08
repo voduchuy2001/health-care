@@ -12,13 +12,11 @@
 </head>
 
 <body>
-
-    <!-- Begin page -->
     <div id="layout-wrapper">
 
-    @include('admin.components.header')
+        @include('admin.components.header')
 
-    @include('admin.components.left-sidebar')
+        @include('admin.components.left-sidebar')
 
         <div class="main-content">
             <div class="page-content">
@@ -34,8 +32,6 @@
     @include('admin.components.back-to-top')
 
     @include('admin.components.loader')
-    
-    @include('admin.components.settings')
 
     @include('admin.layouts.javascript')
 </body>

@@ -48,11 +48,7 @@
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-success w-100" type="submit">Continute</button>
-                                            </div>
-
-                                            <div class="mt-4">
-                                                <a href="/"><i class="fa fa-arrow-left"></i> Turn back home</a>
+                                                <button class="btn btn-primary w-100" type="submit">Continute</button>
                                             </div>
                                         </div>
                                     </form>

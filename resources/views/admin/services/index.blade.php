@@ -34,23 +34,17 @@
                     </thead>
                     <tbody>
                         @if ($services->isNotEmpty())
-                        @foreach ($services as $article)
+                        @foreach ($services as $service)
                         <tr>
-                            <td class="fw-medium">{{$article->id}}</td>
-                            <td>{{$article->short_content}}</td>
-                            <td><img src="{{$article->image}}" alt="" class="rounded avatar-xs"></td>
-                            <td>{{$article->user->name}} {{$article->user->lastName}}</td>
-                            <td>{{$article->created_at->format('d/m/Y')}}</td>
+                            <td class="fw-medium">{{ $service->id }}</td>
+                            <td>{{ $service->name }}</td>
+                            <td><img src="{{ url($service->image) }}" alt="{{ $service->name }}" class="rounded avatar-xs">
+                            </td>
+                            <td>{{ CurrencyHelper::format($service->price) }}</td>
                             <td>
                                 <div class="hstack gap-3 fs-15">
-                                    <a href="{{ route('edit-article', ['id'=>$article->id]) }}"
-                                        class="link-warning"><i class="ri-edit-2-line"></i></a>
-
-                                    <a wire:click="delete({{ $article->id }})" class=" link-danger"
-                                        style="cursor: pointer">
-                                        <i class="ri-delete-bin-2-line" data-bs-toggle="modal"
-                                            data-bs-target=".deleteModal" data-bs-backdrop="static">
-                                        </i>
+                                    <a href="{{ route('admin.service.edit', ['id' => $service->id]) }}" class="link-warning">
+                                        <i class="ri-edit-2-line"></i>
                                     </a>
                                 </div>
                             </td>

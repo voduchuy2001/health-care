@@ -55,7 +55,7 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Gửi email khôi phục</button>
+                                            <button class="btn btn-primary w-100" type="submit">Gửi email khôi phục</button>
                                         </div>
                                     </form>
                                 </div>

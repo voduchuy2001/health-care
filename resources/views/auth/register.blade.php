@@ -85,7 +85,7 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Đăng ký</button>
+                                            <button class="btn btn-primary w-100" type="submit">Đăng ký</button>
                                         </div>
 
                                         <div class="mt-4 text-center">

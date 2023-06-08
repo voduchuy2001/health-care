@@ -41,7 +41,8 @@
                                         @csrf
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Bấm vào đây để gửi yêu cầu</button>
+                                            <button class="btn btn-primary w-100" type="submit">Bấm vào đây để gửi yêu
+                                                cầu</button>
                                         </div>
                                     </form>
                                 </div>

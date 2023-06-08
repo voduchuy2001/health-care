@@ -13,11 +13,10 @@ return new class() extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('description');
-            $table->integer('price');
-            $table->text('meta_description');
-            $table->text('meta_keywords');
-            $table->text('meta_title');
-            $table->integer('service_pack_id');
+            $table->bigInteger('price');
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_title')->nullable();
             $table->timestamps();
         });
     }

@@ -2,17 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreServicesRequest;
+use App\Http\Requests\Admin\Services\StoreServicesRequest;
+use App\Http\Requests\Admin\Services\UpdateServicesRequest;
 use App\Models\Service;
+use App\Traits\ImageTrait;
 
 class ServiceController extends Controller
 {
-    public $perPage = 10;
+    use ImageTrait;
+
+    protected $perPage = 1;
+
+    protected $service;
+
+    public function __construct(Service $service)
+    {
+        $this->service = $service;
+    }
 
     public function index()
     {
-        $services = Service::orderByDesc('created_at')->paginate($this->perPage);
+        $services = $this->service->orderByDesc('created_at')->paginate($this->perPage);
 
         return view('admin.services.index', compact('services'));
     }
@@ -24,6 +36,39 @@ class ServiceController extends Controller
 
     public function store(StoreServicesRequest $request)
     {
-        
+        $data = $request->validated();
+
+        $data['image'] = $this->upload($request, 'image', 'images');
+
+        $service = $this->service->create($data);
+
+        ToastrHelper::success('Thêm mới', $service->name);
+
+        return redirect()->route('admin.service.index');
+    }
+
+    public function edit($id)
+    {
+        $service = $this->service->findOrFail($id);
+
+        return view('admin.services.edit', compact('service'));
+    }
+
+    public function update(UpdateServicesRequest $request, $id)
+    {
+        $data = $request->validated();
+
+        $service = $this->service->findOrFail($id);
+
+        if ($request['image']) {
+            $this->delete($service->image);
+            $data['image'] = $this->upload($request, 'image', 'images');
+        }
+
+        $service->update($data);
+
+        ToastrHelper::success('Cập nhật', $service->name);
+
+        return redirect()->route('admin.service.index');
     }
 }
