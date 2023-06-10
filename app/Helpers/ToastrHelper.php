@@ -13,4 +13,9 @@ class ToastrHelper
     {
         return toastr()->error($type . ' ' . $message . ' không thành công');
     }
+
+    public static function warning(string $message = null)
+    {
+        return toastr()->warning($message);
+    }
 }

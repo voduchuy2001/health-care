@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Service extends Model
 {
@@ -16,6 +17,11 @@ class Service extends Model
         'meta_description',
         'meta_keywords',
         'meta_title',
-        'service_pack_id',
     ];
+
+    public function servicePack(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, 'services_service_packs', 'service_id', 'service_pack_id')
+            ->withTimestamps();
+    }
 }

@@ -13,7 +13,7 @@ class ServiceController extends Controller
 {
     use ImageTrait;
 
-    protected $perPage = 1;
+    protected $perPage = 10;
 
     protected $service;
 
@@ -38,7 +38,7 @@ class ServiceController extends Controller
     {
         $data = $request->validated();
 
-        $data['image'] = $this->upload($request, 'image', 'images');
+        $data['image'] = $this->uploadImage($request, 'image', 'images');
 
         $service = $this->service->create($data);
 
@@ -61,13 +61,25 @@ class ServiceController extends Controller
         $service = $this->service->findOrFail($id);
 
         if ($request['image']) {
-            $this->delete($service->image);
-            $data['image'] = $this->upload($request, 'image', 'images');
+            $this->deleteImage($service->image);
+            $data['image'] = $this->uploadImage($request, 'image', 'images');
         }
 
         $service->update($data);
 
         ToastrHelper::success('Cập nhật', $service->name);
+
+        return redirect()->route('admin.service.index');
+    }
+
+    public function delete($id)
+    {
+        $service = $this->service->findOrFail($id);
+
+        $this->deleteImage($service->image);
+        $service->delete();
+
+        ToastrHelper::success('Xóa', $service->name);
 
         return redirect()->route('admin.service.index');
     }

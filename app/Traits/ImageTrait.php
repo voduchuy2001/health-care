@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 trait ImageTrait
 {
-    public function upload(Request $request, string $fieldName, string $storagePath): string
+    public function uploadImage(Request $request, string $fieldName, string $storagePath): string
     {
         if ($request->hasFile($fieldName)) {
             $file = $request->file($fieldName);
@@ -21,7 +21,7 @@ trait ImageTrait
         return null;
     }
 
-    public function delete(string $path): bool
+    public function deleteImage(string $path): bool
     {
         return File::delete($path);
     }

@@ -11,7 +11,7 @@ return new class() extends Migration
         Schema::create('services_service_packs', function (Blueprint $table) {
             $table->id();
             $table->integer('service_id');
-            $table->integer('service_packs_id');
+            $table->integer('service_pack_id');
             $table->timestamps();
         });
     }

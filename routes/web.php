@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\ServicePackController as AdminServicePackController;
 use App\Http\Controllers\Guess\AboutUsController;
 use App\Http\Controllers\Guess\ArticleController;
 use App\Http\Controllers\Guess\ContactUsController;
@@ -29,5 +30,17 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
         Route::post('/store', 'store')->name('store');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::put('/update/{id}', 'update')->name('update');
+
+        Route::get('/delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('/service-pack')->controller(AdminServicePackController::class)->name('admin.service-pack.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+
+        Route::get('/delete/{id}', 'delete')->name('delete');
     });
 });

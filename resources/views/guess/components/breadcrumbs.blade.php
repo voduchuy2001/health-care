@@ -7,7 +7,10 @@
                 <p class="breadcrumbs mb-2"><span class="mr-2">
                         <a href="/">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span>
                 </p>
-                <h1 class="mb-0 bread">Liên hệ với chúng tôi</h1>
+                @php
+                $title = SetPageTitleHelper::getTitle();
+                @endphp
+                <h1 class="mb-0 bread">{{ $title['title'] }}</h1>
             </div>
         </div>
     </div>

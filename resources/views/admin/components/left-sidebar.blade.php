@@ -34,7 +34,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="{{ route('admin.service-pack.index') }}">
                         <i class="ri-rocket-line"></i> <span>Gói dịch vụ</span>
                     </a>
                 </li>
