@@ -38,16 +38,16 @@
                         <i class="ri-rocket-line"></i> <span>Gói dịch vụ</span>
                     </a>
                 </li>
-
+                
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
-                        <i class="ri-book-line"></i> <span>Bài viết</span>
+                    <a class="nav-link menu-link" href="{{ route('admin.appointment.index') }}">
+                        <i class="ri-calendar-line"></i> <span>Cuộc hẹn</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="widgets.html">
-                        <i class="ri-calendar-line"></i> <span>Cuộc hẹn</span>
+                        <i class="ri-book-line"></i> <span>Bài viết</span>
                     </a>
                 </li>
 

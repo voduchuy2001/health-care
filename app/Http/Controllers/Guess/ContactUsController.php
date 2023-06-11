@@ -32,7 +32,9 @@ class ContactUsController extends Controller
 
         $contact = $this->contact->create($data);
 
-        $text = "You have a new contact us query\n"
+        $text = "You have a new contact us from\n"
+            . "<b>User: </b>\n"
+            . "$request->name\n"
             . "<b>Email Address: </b>\n"
             . "$request->email\n"
             . "<b>Message: </b>\n"

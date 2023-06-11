@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Helpers\ToastrHelper;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Appointments\StoreAppointmentsRequest;
+use App\Http\Requests\Admin\Appointments\UpdateAppointmentsRequest;
+use App\Models\Appointment;
+
+class AppointmentController extends Controller
+{
+    public $appointment;
+
+    public $perPage = 10;
+
+    public function __construct(Appointment $appointment)
+    {
+        $this->appointment = $appointment;
+    }
+
+    public function index()
+    {
+        $appointments = $this->appointment->orderByDesc('created_at')->paginate($this->perPage);
+
+        return view('admin.appointments.index', compact('appointments'));
+    }
+
+    public function create()
+    {
+        return view('admin.appointments.create');
+    }
+
+    public function store(StoreAppointmentsRequest $request)
+    {
+        $data = $request->validated();
+
+        $appointment = $this->appointment->create($data);
+
+        ToastrHelper::success('Thêm mới', $appointment->date_time);
+
+        return redirect()->route('admin.appointment.index');
+    }
+
+    public function edit($id)
+    {
+        $appointment = $this->appointment->findOrFail($id);
+
+        return view('admin.appointments.edit', compact('appointment'));
+    }
+
+
+    public function update(UpdateAppointmentsRequest $request, $id)
+    {
+        $data = $request->validated();
+
+        $appointment = $this->appointment->findOrFail($id);
+
+        $appointment->update($data);
+
+        ToastrHelper::success('Cập nhật', $appointment->date_time);
+
+        return redirect()->route('admin.appointment.index');
+    }
+
+    public function delete($id)
+    {
+        $appointment = $this->appointment->findOrFail($id);
+
+        $appointment->delete();
+
+        ToastrHelper::success('Xóa', $appointment->date_time);
+
+        return redirect()->back();
+    }
+}

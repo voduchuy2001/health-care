@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
 use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\ServicePackController as AdminServicePackController;
 use App\Http\Controllers\Guess\AboutUsController;
+use App\Http\Controllers\Guess\AppointmentController;
 use App\Http\Controllers\Guess\ArticleController;
 use App\Http\Controllers\Guess\ContactUsController;
 use App\Http\Controllers\Guess\HomeController;
@@ -22,6 +24,7 @@ Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.ind
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/service-pack', [ServicePackController::class, 'index'])->name('service-pack.index');
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+Route::post('/appointment/store', [AppointmentController::class, 'store'])->name('appointment.store');
 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -46,6 +49,15 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 
     Route::prefix('/contact')->controller(AdminContactUsController::class)->name('admin.contact.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('/appointment')->controller(AdminAppointmentController::class)->name('admin.appointment.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::put('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'delete')->name('delete');

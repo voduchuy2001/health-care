@@ -12,11 +12,13 @@ return new class() extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
+            $table->string('email');
             $table->string('date');
             $table->string('time');
-            $table->text('notes');
-            $table->enum('status', ['pending', 'accepted', 'rejected', 'cancelled', 'succeeded']);
-            $table->integer('service_id');
+            $table->text('notes')->nullable();
+            $table->boolean('status')->default(0);
+            $table->integer('service_id')->nullable();
+            $table->integer('service_pack_id')->nullable();
             $table->timestamps();
         });
     }

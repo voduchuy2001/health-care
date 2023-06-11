@@ -22,16 +22,4 @@ class UpdateServicesRequest extends FormRequest
             'description' => ['required', 'string'],
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'image.required' => 'Trường này không được bỏ trống.',
-            'image.image' => 'Chỉ chấp nhận hình ảnh.',
-            'image.max' => 'Tối đa 4mb.',
-            'name.required' => 'Trường này không được bỏ trống.',
-            'price.required' => 'Trường này không được bỏ trống.',
-            'description.required' => 'Trường này không được bỏ trống.',
-        ];
-    }
 }
