@@ -66,7 +66,7 @@
 
         @if ($appointments->hasPages())
         <div class="card-body">
-            {{$appointments->onEachSide(1)->links()}}
+            {{ $appointments->onEachSide(1)->links() }}
         </div>
         @endif
     </div>

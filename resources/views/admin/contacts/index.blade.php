@@ -56,7 +56,7 @@
 
         @if ($contacts->hasPages())
         <div class="card-body">
-            {{$contacts->onEachSide(1)->links()}}
+            {{ $contacts->onEachSide(1)->links() }}
         </div>
         @endif
     </div>

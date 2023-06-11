@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\ServicePackController as AdminServicePackController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Guess\AboutUsController;
 use App\Http\Controllers\Guess\AppointmentController;
 use App\Http\Controllers\Guess\ArticleController;
@@ -61,5 +62,12 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::put('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('/user')->controller(UserController::class)->name('admin.user.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
     });
 });

@@ -62,7 +62,7 @@
 
         @if ($servicePacks->hasPages())
         <div class="card-body">
-            {{$servicePacks->onEachSide(1)->links()}}
+            {{ $servicePacks->onEachSide(1)->links() }}
         </div>
         @endif
     </div>

@@ -10,10 +10,10 @@ class Admin
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role === 'admin') {
+        if (Auth::user() &&  Auth::user()->is_admin === 1) {
             return $next($request);
         } else {
-            toastr()->error('You do not have permission to access this resource!');
+            toastr()->error('Bạn không có quyền truy cập vui lòng quay lại');
             abort(403);
         }
     }
