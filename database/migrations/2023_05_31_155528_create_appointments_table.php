@@ -13,12 +13,9 @@ return new class() extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('email');
-            $table->string('date');
-            $table->string('time');
+            $table->string('date_time');
             $table->text('notes')->nullable();
             $table->boolean('status')->default(0);
-            $table->integer('service_id')->nullable();
-            $table->integer('service_pack_id')->nullable();
             $table->timestamps();
         });
     }
