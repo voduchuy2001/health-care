@@ -9,10 +9,12 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "barryvdh/laravel-elfinder": "^0.5.2",
         "guzzlehttp/guzzle": "^7.2",
+        "irazasyed/telegram-bot-sdk": "^3.13",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
+        "livewire/livewire": "^2.12",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {

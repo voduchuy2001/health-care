@@ -14,6 +14,7 @@ return new class() extends Migration
             $table->string('email');
             $table->string('subject');
             $table->text('message');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

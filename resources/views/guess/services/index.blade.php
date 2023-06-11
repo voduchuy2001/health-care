@@ -12,7 +12,11 @@
                     <div class="media-body p-2 mt-3">
                         <h3 class="heading">{{ $service->name }}</h3>
                         <p>{{ $service->description }}</p>
-                        <p><a href="#" class="btn btn-primary btn-outline-primary">{{ CurrencyHelper::format($service->price) }}</a></p>
+                        <p>
+                            <a href="#" class="btn btn-primary btn-outline-primary">{{
+                                CurrencyHelper::format($service->price) }}
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -26,5 +30,4 @@
         </div>
     </div>
 </section>
-
 @endsection

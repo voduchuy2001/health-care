@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ServicePack\StoreServicePacksRequest;
-use App\Http\Requests\Admin\ServicePack\UpdateServicePacksRequest;
+use App\Http\Requests\Admin\ServicePacks\StoreServicePacksRequest;
+use App\Http\Requests\Admin\ServicePacks\UpdateServicePacksRequest;
 use App\Models\Service;
 use App\Models\ServicePack;
 

@@ -16,6 +16,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us.index');
+Route::post('/contact-us/store', [ContactUsController::class, 'store'])->name('contact-us.store');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
 Route::get('/service', [ServiceController::class, 'index'])->name('service.index');
 Route::get('/service-pack', [ServicePackController::class, 'index'])->name('service-pack.index');
