@@ -11,12 +11,6 @@
 
             @endforeach
         </div>
-
-        <div class="row mt-5">
-            <div class="col text-center">
-                {{ $services->links() }}
-            </div>
-        </div>
     </div>
 </section>
 @endsection

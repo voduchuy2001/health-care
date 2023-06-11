@@ -17,10 +17,6 @@
             
             @endforeach
         </div>
-
-        <div class="mt-3">
-            {{ $servicePacks->links() }}
-        </div>
     </div>
 </section>
 @endsection

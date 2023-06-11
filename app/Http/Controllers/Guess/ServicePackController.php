@@ -10,8 +10,6 @@ class ServicePackController extends Controller
 {
     public $servicePack;
 
-    public $perPage = 4;
-
     public function __construct(ServicePack $servicePack)
     {
         $this->servicePack = $servicePack;
@@ -21,7 +19,7 @@ class ServicePackController extends Controller
     {
         SetPageTitleHelper::setTitle('Gói Dịch vụ');
 
-        $servicePacks = $this->servicePack->orderByDesc('created_at')->paginate($this->perPage);
+        $servicePacks = $this->servicePack->orderByDesc('created_at')->get();
 
         return view('guess.service-packs.index', compact('servicePacks'));
     }

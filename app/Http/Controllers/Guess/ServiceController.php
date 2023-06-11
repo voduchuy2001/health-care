@@ -11,8 +11,6 @@ class ServiceController extends Controller
 {
     public $service;
 
-    public $perPage = 3;
-
     public function __construct(Service $service)
     {
         $this->service = $service;
@@ -22,7 +20,7 @@ class ServiceController extends Controller
     {
         SetPageTitleHelper::setTitle('Dịch vụ');
 
-        $services = $this->service->orderByDesc('created_at')->paginate($this->perPage);
+        $services = $this->service->orderByDesc('created_at')->get();
 
         return view('guess.services.index', compact('services'));
     }

@@ -8,8 +8,8 @@
                         <div class="text w-100">
                             <h2>Chào mừng đến với SPACanTho</h2>
                             <h1 class="mb-4">Get in shape faster, live your happy life</h1>
-                            <p><a href="#" class="btn btn-primary">Khám phá thêm</a> <a href="#"
-                                    class="btn btn-white">Liên hệ với chúng tôi</a></p>
+                            <p><a href="{{ route('service.index') }}" class="btn btn-primary">Khám phá thêm</a> <a
+                                    href="{{ route('contact-us.index') }}" class="btn btn-white">Liên hệ với chúng tôi</a></p>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                         <div class="text w-100">
                             <h2>A Fresh approach to healthy life</h2>
                             <h1 class="mb-4 color-white">Unlock your potential with good nutrition</h1>
-                            <p><a href="#" class="btn btn-primary">Khám phá thêm</a> <a href="#"
+                            <p><a href="{{ route('service.index') }}" class="btn btn-primary">Khám phá thêm</a> <a href="{{ route('contact-us.index') }}"
                                     class="btn btn-white">Liên hệ với chúng tôi</a></p>
                         </div>
                     </div>
