@@ -59,13 +59,13 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="{{ route('admin.contact.index') }}">
                         <i class="ri-phone-line"></i> <span>Liên hệ</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="{{ route('admin.user.index') }}">
                         <i class="ri-user-line"></i> <span>Người dùng</span>
                     </a>
                 </li>

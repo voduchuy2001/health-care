@@ -29,8 +29,8 @@
                         @foreach ($contacts as $contact)
                         <tr>
                             <td class="fw-medium">{{ $contact->id }}</td>
-                            <td>{{ $contact->subject }}</td>
-                            <td class="text-truncate">{{ $contact->message }} ...</td>
+                            <td class="text-truncate">{{ $contact->subject }}</td>
+                            <td class="text-truncate">{{ $contact->message }}</td>
                             <td>{{ $contact->status === 0 ? 'Chưa được xử lý' : 'Đã được xử lý' }}</td>
                             <td>
                                 <div class="hstack gap-3 fs-15">
