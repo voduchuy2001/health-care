@@ -36,10 +36,10 @@
 
                                                 @foreach ($services as $key => $service)
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="services[]"
+                                                    <input class="form-check-input" type="checkbox" name="service_ids[]"
                                                         value="{{ $service->id }}" id="service-{{ $key}}">
                                                     <label class="form-check-label" for="service-{{ $key}}">
-                                                        {{ $service->name }}
+                                                        {{ $service->name }} ({{ CurrencyHelper::format($service->price) }})
                                                     </label>
                                                 </div>
                                                 @endforeach
@@ -53,9 +53,11 @@
                                         <div class="mb-3">
                                             <div class="form-group">
                                                 <label for="price">Giá</label>
-                                                <input type="text" name="price"
+                                                <input type="text" name="price" x-mask:dynamic="$money($input, ',')" x-data
                                                     class="form-control @error('price') is-invalid @enderror" id="slug"
                                                     placeholder="Giá">
+                                                <p class="text-danger mt-1">(*) Nếu không chọn giá - giá sẽ bằng tổng
+                                                    giá các dịch vụ được chọn</p>
 
                                                 @error('price')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -89,12 +91,4 @@
         </div>
     </div>
 </form>
-@endsection
-
-@section('scripts')
-<script>
-    $(document).ready(function() {
-    $('#services').select2();
-});
-</script>
 @endsection

@@ -69,6 +69,12 @@
                         <i class="ri-user-line"></i> <span>Người dùng</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('home.index') }}" target="__blank">
+                        <i class="ri-external-link-fill"></i> <span>Đi đến trang Web</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

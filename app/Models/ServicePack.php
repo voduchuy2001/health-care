@@ -18,7 +18,7 @@ class ServicePack extends Model
         'meta_title',
     ];
 
-    public function service(): BelongsToMany
+    public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, 'services_service_packs', 'service_pack_id', 'service_id')
             ->withTimestamps();

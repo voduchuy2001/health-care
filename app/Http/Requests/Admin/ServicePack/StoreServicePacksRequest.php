@@ -6,13 +6,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreServicePacksRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'price' => str_replace('.', '', $this->input('price')),
+        ]);
+    }
+
     public function rules()
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'price' => ['required', 'integer', 'min:0'],
+            'price' => ['nullable'],
             'description' => ['required', 'string'],
-            'services' => ['required'],
+            'service_ids' => ['required'],
         ];
     }
 }

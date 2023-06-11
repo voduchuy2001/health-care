@@ -36,7 +36,7 @@
                                         <div class="mb-3">
                                             <div class="form-group">
                                                 <label for="price">Giá</label>
-                                                <input type="text" name="price"
+                                                <input type="text" name="price" x-mask:dynamic="$money($input, ',')" x-data
                                                     class="form-control @error('price') is-invalid @enderror" id="slug"
                                                     placeholder="Giá">
 
