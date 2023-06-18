@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Appointments\StoreAppointmentsRequest;
 use App\Http\Requests\Admin\Appointments\UpdateAppointmentsRequest;
 use App\Models\Appointment;
+use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
@@ -19,9 +20,21 @@ class AppointmentController extends Controller
         $this->appointment = $appointment;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $appointments = $this->appointment->orderByDesc('created_at')->paginate($this->perPage);
+        $data = $request['search_keywords'];
+
+        if ($data) {
+            $appointments = $this->appointment
+                ->where(function ($query) use ($data) {
+                    $query->where('phone', 'like', '%' . $data . '%');
+                })
+                ->paginate($this->perPage);
+
+            $appointments->appends(['search_keywords' => $data]);
+        } else {
+            $appointments = $this->appointment->orderByDesc('created_at')->paginate($this->perPage);
+        }
 
         return view('admin.appointments.index', compact('appointments'));
     }

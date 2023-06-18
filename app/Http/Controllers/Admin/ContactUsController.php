@@ -6,6 +6,7 @@ use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Contact\UpdateContactsRequest;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
@@ -18,9 +19,21 @@ class ContactUsController extends Controller
         $this->contact = $contact;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $contacts =  $this->contact->orderByDesc('created_at')->paginate($this->perPage);
+        $data = $request['search_keywords'];
+
+        if ($data) {
+            $contacts = $this->contact
+                ->where(function ($query) use ($data) {
+                    $query->where('email', 'like', '%' . $data . '%');
+                })
+                ->paginate($this->perPage);
+
+            $contacts->appends(['search_keywords' => $data]);
+        } else {
+            $contacts = $this->contact->orderByDesc('created_at')->paginate($this->perPage);
+        }
 
         return view('admin.contacts.index', compact('contacts'));
     }

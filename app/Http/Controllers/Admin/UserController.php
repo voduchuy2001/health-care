@@ -6,6 +6,7 @@ use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\UpdateUsersRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -18,9 +19,21 @@ class UserController extends Controller
         $this->user = $user;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->user->orderByDesc('created_at')->paginate($this->perPage);
+        $data = $request['search_keywords'];
+
+        if ($data) {
+            $users = $this->user
+                ->where(function ($query) use ($data) {
+                    $query->where('email', 'like', '%' . $data . '%');
+                })
+                ->paginate($this->perPage);
+
+            $users->appends(['search_keywords' => $data]);
+        } else {
+            $users = $this->user->orderByDesc('created_at')->paginate($this->perPage);
+        }
 
         return view('admin.users.index', compact('users'));
     }

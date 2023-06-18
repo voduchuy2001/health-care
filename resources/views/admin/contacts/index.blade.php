@@ -6,9 +6,19 @@
     <div class="card">
         <div class="card-header border-0">
             <div class="row g-4">
+                <div class="col-sm">
+                    <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                            <form action="{{ route('admin.contact.index') }}" method="GET"
+                                enctype="multipart/form-data">
 
-                @include('admin.components.search')
-
+                                <input name="search_keywords" type="text" class="form-control" id="search_keywords"
+                                    placeholder="Nhập email...">
+                                <i class="ri-search-line search-icon"></i>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

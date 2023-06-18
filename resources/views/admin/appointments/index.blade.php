@@ -15,8 +15,19 @@
                     </div>
                 </div>
 
-                @include('admin.components.search')
+                <div class="col-sm">
+                    <div class="d-flex justify-content-sm-end">
+                        <div class="search-box ms-2">
+                            <form action="{{ route('admin.appointment.index') }}" method="GET"
+                                enctype="multipart/form-data">
 
+                                <input name="search_keywords" type="text" class="form-control" id="search_keywords"
+                                    placeholder="Nhập số điện thoại...">
+                                <i class="ri-search-line search-icon"></i>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
