@@ -50,13 +50,17 @@ class ServicePackController extends Controller
     {
         $data = $request->validated();
 
-        if (!empty($request->input('price'))) {
+        $price = 0;
+
+        if ($request->input('price')) {
             $data['price'] = $request->input('price');
         } else {
             foreach ($data['service_ids'] as $id) {
                 $service = $this->service->findOrFail($id);
-                $data['price'] += $service->price;
+                $price += $service->price;
             }
+
+            $data['price'] = $price;
         }
 
         $servicePack = $this->servicePack->create($data);
@@ -85,13 +89,17 @@ class ServicePackController extends Controller
 
         $servicePack = $this->servicePack->findOrFail($id);
 
-        if (!empty($request->input('price'))) {
+        $price = 0;
+
+        if ($request->input('price')) {
             $data['price'] = $request->input('price');
         } else {
             foreach ($data['service_ids'] as $id) {
                 $service = $this->service->findOrFail($id);
-                $data['price'] += $service->price;
+                $price += $service->price;
             }
+
+            $data['price'] = $price;
         }
 
         $servicePack->update($data);
