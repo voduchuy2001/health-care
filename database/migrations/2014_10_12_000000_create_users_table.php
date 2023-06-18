@@ -11,14 +11,13 @@ return new class() extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image')->nullable();
-            $table->string('position')->nullable();
+            $table->string('image')->nullable()->default('admin/assets/images/avatar.png');
             $table->text('short_description')->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
-            $table->string('twister')->nullable();
+            $table->string('twitter')->nullable();
             $table->string('email')->unique();
-            $table->boolean('is_admin')->default(0);
+            $table->enum('role', ['is_admin', 'is_user', 'is_employee'])->default('is_user');
             $table->boolean('is_default')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

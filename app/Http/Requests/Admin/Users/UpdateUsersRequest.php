@@ -9,7 +9,7 @@ class UpdateUsersRequest extends FormRequest
     public function rules()
     {
         return [
-            'is_admin' => ['in:0,1']
+            'role' => ['in:is_admin,is_user,is_employee']
         ];
     }
 }

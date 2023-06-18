@@ -35,7 +35,7 @@ class UserController extends Controller
     public function update(UpdateUsersRequest $request, $id)
     {
         $data = $request->validated();
-
+        
         $user = $this->user->findOrFail($id);
 
         if ($user->is_default === 1) {

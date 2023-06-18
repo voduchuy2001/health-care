@@ -31,11 +31,16 @@
                             <td class="fw-medium">{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->is_admin === 1 ? "Quản trị viên" : "Người dùng" }}</td>
+                            <td>@if ($user->role === 'is_admin')
+                                Quản trị viên
+                                @elseif($user->role === 'is_employee')
+                                Nhân viên
+                                @else
+                                Người dùng
+                                @endif</td>
                             <td>
                                 <div class="hstack gap-3 fs-15">
-                                    <a href="{{ route('admin.user.edit', ['id' => $user->id]) }}"
-                                        class="link-warning">
+                                    <a href="{{ route('admin.user.edit', ['id' => $user->id]) }}" class="link-warning">
                                         <i class="ri-eye-2-line"></i>
                                     </a>
                                 </div>

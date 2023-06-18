@@ -33,17 +33,19 @@
                                                 href="{{ route('contact-us.index') }}" class="nav-link">Liên hệ</a>
                                 </li>
 
-                                @if (Auth::user())
-                                <li class="nav-item"><a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                                Đăng xuất</a>
+
+                                @if (Auth::check())
+                                @if (Auth::user()->role === 'is_user')
+                                <li class="nav-item">
+                                        <a href="{{ route('profile.index') }}" class="nav-link">Thông tin cá nhân</a>
                                 </li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                </form>
                                 @else
-                                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">
-                                                Đăng nhập</a>
+                                <li class="nav-item">
+                                        <a href="{{ route('dashboard.index') }}" class="nav-link">Trang quản trị</a>
+                                </li>
+                                @endif
+                                @else
+                                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Đăng nhập</a>
                                 </li>
                                 @endif
                         </ul>

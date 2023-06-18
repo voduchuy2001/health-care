@@ -14,9 +14,6 @@
                         </a>
                     </div>
                 </div>
-
-                @include('admin.components.search')
-
             </div>
         </div>
 

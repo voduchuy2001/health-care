@@ -14,7 +14,6 @@
                         <img class="avatar avatar-lg" src="admin/assets/images/avatar.png" alt="{{ $user->name }}">
                         @endif
                     </p>
-                    <p>Chức vụ: {{ $user->position ? $user->position : "Chưa được thêm"}}</p>
                     <p>Tiểu sử: {{ $user->short_description ? $user->position : "Chưa được thêm"}}</p>
                     <p>Email: {{ $user->email ? $user->email : "Chưa được thêm"}}</p>
                     <p>Facebook: {{ $user->facebook ? $user->facebook : "Chưa được thêm"}}</p>
@@ -27,8 +26,8 @@
                         @method('PUT')
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="is_admin" value="1" @if ($user->is_admin
-                            === 1)
+                            <input class="form-check-input" type="radio" name="role" value="is_admin" @if ($user->role
+                            === 'is_admin')
                             @checked(true)
                             @endif
                             id="is_admin">
@@ -38,12 +37,24 @@
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="is_admin" value="0" @if ($user->is_admin
-                            === 0)
+                            <input class="form-check-input" type="radio" name="role" value="is_employee" @if ($user->role
+                            === 'is_employee')
                             @checked(true)
                             @endif
-                            id="is_not_admin">
-                            <label class="form-check-label" for="is_not_admin">
+                            id="is_employee">
+                            <label class="form-check-label" for="is_employee">
+                                Nhân viên
+                            </label>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" value="is_user" @if ($user->role
+                            === 'is_user')
+                            @checked(true)
+                            @endif
+                            id="is_user">
+                            <label class="form-check-label" for="is_user">
                                 Người dùng
                             </label>
                         </div>

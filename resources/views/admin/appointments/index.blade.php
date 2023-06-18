@@ -28,6 +28,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Khách hàng</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Số điện thoại</th>
                             <th scope="col">Lịch</th>
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Hành Động</th>
@@ -40,6 +41,7 @@
                             <td class="fw-medium">{{ $appointment->id }}</td>
                             <td>{{ $appointment->name }}</td>
                             <td>{{ $appointment->email }}</td>
+                            <td>{{ $appointment->phone }}</td>
                             <td>{{ $appointment->date_time }}</td>
                             <td>{{ $appointment->status === 0 ? 'Chưa được xử lý' : 'Đã được xử lý' }}</td>
                             <td>

@@ -10,10 +10,11 @@ class Admin
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->is_admin === 1) {
+        if (Auth::user()->role === 'is_admin' || Auth::user()->role === 'is_employee') {
             return $next($request);
         } else {
             toastr()->error('Bạn không có quyền truy cập vui lòng quay lại');
+            
             abort(403);
         }
     }

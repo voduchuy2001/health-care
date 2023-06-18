@@ -44,18 +44,24 @@
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="admin/assets/images/users/avatar-1.jpg"
+                            <img class="rounded-circle header-profile-user" src="{{ Auth::user()->image}}"
                                 alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                     {{ Auth::user()->name }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{
-                                    Auth::user()->role }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">
+                                    @if (Auth::user()->role === 'is_admin')
+                                    Quản trị viên
+                                    @elseif(Auth::user()->role === 'is_employee')
+                                    Nhân viên
+                                    @else
+                                    Người dùng
+                                    @endif</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="pages-profile.html"><i
+                        <a class="dropdown-item" href="{{ route('profile.index') }}"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle">Thông tin cá nhân</span>
                         </a>

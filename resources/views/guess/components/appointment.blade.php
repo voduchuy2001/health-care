@@ -11,7 +11,7 @@
             <div class="col-md-6 d-flex align-items-stretch">
                 <div class="consultation consul w-100 px-4 px-md-5">
                     <div class="text-center">
-                        <h3 class="mb-4">Tư vấn miễn phí</h3>
+                        <h3 class="mb-4">Đặt lịch với chúng tôi</h3>
                     </div>
 
                     <form action="{{ route('appointment.store') }}" method="POST" class="appointment-form"

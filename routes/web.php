@@ -13,6 +13,7 @@ use App\Http\Controllers\Guess\ContactUsController;
 use App\Http\Controllers\Guess\HomeController;
 use App\Http\Controllers\Guess\ServiceController;
 use App\Http\Controllers\Guess\ServicePackController;
+use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,11 @@ Route::get('/service-pack', [ServicePackController::class, 'index'])->name('serv
 Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
 Route::post('/appointment/store', [AppointmentController::class, 'store'])->name('appointment.store');
 
-Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::put('/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+
+Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::prefix('/service')->controller(AdminServiceController::class)->name('admin.service.')->group(function () {
