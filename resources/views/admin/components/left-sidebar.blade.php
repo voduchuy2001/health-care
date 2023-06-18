@@ -1,14 +1,6 @@
 <div class="app-menu navbar-menu">
     <div class="navbar-brand-box">
-        <a href="index.html" class="logo logo-dark">
-            <span class="logo-sm">
-                <img src="admin/assets/images/logo-sm.png" alt="" height="22">
-            </span>
-            <span class="logo-lg">
-                <img src="admin/assets/images/logo-dark.png" alt="" height="17">
-            </span>
-        </a>
-        <a href="index.html" class="logo logo-light">
+        <a href="{{ route('dashboard.index') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="admin/assets/images/logo-sm.png" alt="" height="22">
             </span>
