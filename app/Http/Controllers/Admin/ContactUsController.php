@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SetPageTitleHelper;
 use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Contact\UpdateContactsRequest;
@@ -21,6 +22,8 @@ class ContactUsController extends Controller
 
     public function index(Request $request)
     {
+        SetPageTitleHelper::setTitle('Liên hệ');
+        
         $data = $request['search_keywords'];
 
         if ($data) {
@@ -40,6 +43,8 @@ class ContactUsController extends Controller
 
     public function edit($id)
     {
+        SetPageTitleHelper::setTitle('Cập nhật liên hệ');
+
         $contact = $this->contact->findOrFail($id);
 
         return view('admin.contacts.edit', compact('contact'));

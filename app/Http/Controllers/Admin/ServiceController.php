@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SetPageTitleHelper;
 use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Services\StoreServicesRequest;
@@ -24,6 +25,8 @@ class ServiceController extends Controller
 
     public function index()
     {
+        SetPageTitleHelper::setTitle('Dịch vụ');
+        
         $services = $this->service->orderByDesc('created_at')->paginate($this->perPage);
 
         return view('admin.services.index', compact('services'));
@@ -31,6 +34,8 @@ class ServiceController extends Controller
 
     public function create()
     {
+        SetPageTitleHelper::setTitle('Thêm mới dịch vụ');
+
         return view('admin.services.create');
     }
 
@@ -49,6 +54,8 @@ class ServiceController extends Controller
 
     public function edit($id)
     {
+        SetPageTitleHelper::setTitle('Cập nhật dịch vụ');
+
         $service = $this->service->findOrFail($id);
 
         return view('admin.services.edit', compact('service'));

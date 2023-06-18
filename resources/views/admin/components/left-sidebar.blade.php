@@ -36,13 +36,6 @@
                         <i class="ri-calendar-line"></i> <span>Cuộc hẹn</span>
                     </a>
                 </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
-                        <i class="ri-discuss-line"></i> <span>Trang về chúng tôi</span>
-                    </a>
-                </li>
-
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('admin.contact.index') }}">

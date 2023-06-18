@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SetPageTitleHelper;
 use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Appointments\StoreAppointmentsRequest;
@@ -22,6 +23,8 @@ class AppointmentController extends Controller
 
     public function index(Request $request)
     {
+        SetPageTitleHelper::setTitle('Lịch hẹn');
+        
         $data = $request['search_keywords'];
 
         if ($data) {
@@ -41,6 +44,8 @@ class AppointmentController extends Controller
 
     public function create()
     {
+        SetPageTitleHelper::setTitle('Thêm mới lịch hẹn');
+
         return view('admin.appointments.create');
     }
 
@@ -57,6 +62,8 @@ class AppointmentController extends Controller
 
     public function edit($id)
     {
+        SetPageTitleHelper::setTitle('Cập nhật lịch hẹn');
+
         $appointment = $this->appointment->findOrFail($id);
 
         return view('admin.appointments.edit', compact('appointment'));

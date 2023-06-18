@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ServicePack extends Model
 {
+    use HasFactory;
+    
     protected $table = 'service_packs';
 
     protected $fillable = [

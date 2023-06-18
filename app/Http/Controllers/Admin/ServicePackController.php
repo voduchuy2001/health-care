@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SetPageTitleHelper;
 use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ServicePacks\StoreServicePacksRequest;
@@ -23,6 +24,8 @@ class ServicePackController extends Controller
 
     public function index()
     {
+        SetPageTitleHelper::setTitle('Gói dịch vụ');
+        
         $servicePacks = $this->servicePack->orderByDesc('created_at')->paginate($this->perPage);
 
         return view('admin.service-packs.index', compact('servicePacks'));
@@ -30,6 +33,8 @@ class ServicePackController extends Controller
 
     public function create()
     {
+        SetPageTitleHelper::setTitle('Thêm mới gói dịch vụ');
+
         $services = $this->service->orderByDesc('created_at')->get();
 
         if (empty($services)) {
@@ -65,6 +70,8 @@ class ServicePackController extends Controller
 
     public function edit($id)
     {
+        SetPageTitleHelper::setTitle('Cập nhật gói dịch vụ');
+
         $servicePack = $this->servicePack->findOrFail($id);
 
         $services = $this->service->orderByDesc('created_at')->get();

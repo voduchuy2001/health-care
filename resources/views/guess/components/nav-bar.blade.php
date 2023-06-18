@@ -37,7 +37,7 @@
                                 </li>
                                 @else
                                 <li class="nav-item">
-                                        <a href="{{ route('dashboard.index') }}" class="nav-link">Trang quản trị</a>
+                                        <a href="{{ route('dashboard.index') }}" class="nav-link" target="__blank">Trang quản trị</a>
                                 </li>
                                 @endif
                                 @else

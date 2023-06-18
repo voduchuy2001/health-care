@@ -130,24 +130,36 @@
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="old_password" class="form-label">Mật khẩu cũ</label>
-                                        <input type="password" class="form-control" name="old_password"
+                                        <input type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password"
                                             id="old_password" placeholder="Mật khẩu cũ">
+
+                                        @error('old_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="new_password" class="form-label">Mật khẩu mới</label>
-                                        <input type="password" class="form-control" name="new_password"
+                                        <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password"
                                             id="new_password" placeholder="Mật khẩu mới">
+
+                                        @error('new_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="confirm_password" class="form-label">Xác nhận lại mật khẩu</label>
-                                        <input type="password" class="form-control" name="confirm_password"
+                                        <input type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password"
                                             id="confirm_password" placeholder="Xác nhận lại mật khẩu">
+
+                                        @error('confirm_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 

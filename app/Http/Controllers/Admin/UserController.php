@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SetPageTitleHelper;
 use App\Helpers\ToastrHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\UpdateUsersRequest;
@@ -21,6 +22,8 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
+        SetPageTitleHelper::setTitle('Người dùng');
+        
         $data = $request['search_keywords'];
 
         if ($data) {
@@ -40,6 +43,8 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        SetPageTitleHelper::setTitle('Cập nhật thông tin người dùng');
+
         $user = $this->user->findOrFail($id);
 
         return view('admin.users.edit', compact('user'));
