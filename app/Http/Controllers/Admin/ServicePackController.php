@@ -25,7 +25,7 @@ class ServicePackController extends Controller
     public function index()
     {
         SetPageTitleHelper::setTitle('Gói dịch vụ');
-        
+
         $servicePacks = $this->servicePack->orderByDesc('created_at')->paginate($this->perPage);
 
         return view('admin.service-packs.index', compact('servicePacks'));
@@ -37,13 +37,13 @@ class ServicePackController extends Controller
 
         $services = $this->service->orderByDesc('created_at')->get();
 
-        if (empty($services)) {
+        if ($services->count() > 0) {
+            return view('admin.service-packs.create', compact('services'));
+        } else {
             ToastrHelper::warning('Vui lòng thêm các dịch vụ trước.');
 
-            return view('admin.service.index');
+            return redirect()->route('admin.service.index');
         }
-
-        return view('admin.service-packs.create', compact('services'));
     }
 
     public function store(StoreServicePacksRequest $request)
