@@ -25,10 +25,6 @@
                                                 href="{{ route('service.index') }}" class="nav-link">Dịch vụ</a>
                                 </li>
 
-                                <li class="nav-item {{ request()->routeIs('article.*') ? 'active' : '' }}"><a
-                                                href="{{ route('article.index') }}" class="nav-link">Bài viết</a>
-                                </li>
-
                                 <li class="nav-item {{ request()->routeIs('contact-us.*') ? 'active' : '' }}"><a
                                                 href="{{ route('contact-us.index') }}" class="nav-link">Liên hệ</a>
                                 </li>
