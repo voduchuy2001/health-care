@@ -76,11 +76,18 @@ class ServiceController extends Controller
     {
         $service = $this->service->findOrFail($id);
 
-        $this->deleteImage($service->image);
-        $service->delete();
+        if ($service->servicePacks()->count() > 0) {
+            ToastrHelper::warning('Không thể xóa dịch vụ ' . $service->name .
+                '.Vui lòng xóa dịch vụ này trong các gói dịch vụ liên quan trước');
 
-        ToastrHelper::success('Xóa', $service->name);
+            return redirect()->back();
+        } else {
+            $this->deleteImage($service->image);
+            $service->delete();
 
-        return redirect()->route('admin.service.index');
+            ToastrHelper::success('Xóa', $service->name);
+
+            return redirect()->back();
+        }
     }
 }
