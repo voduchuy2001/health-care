@@ -64,7 +64,7 @@ class ProfileController extends Controller
                 'password' => Hash::make($data['new_password'])
             ]);
 
-            ToastrHelper::success('Cập nhật mật khẩu cho tài khoản' . $user->name);
+            ToastrHelper::success('Cập nhật mật khẩu cho tài khoản ' . $user->name);
 
             return redirect()->route('home.index');
         }
